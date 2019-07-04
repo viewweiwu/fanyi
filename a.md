@@ -135,6 +135,33 @@ body {
 
 ![示例][7]
 
+## 配置到你想要的地方
+
+画面已经出来了，如果不能自由的展示到想要的地方，就没法做动画。接下来就是把 `taku` 配置到任意的地方放。
+
+### 配置到指定的坐标
+
+先配置到到 `x = 200px, y = 100px` 这个位置吧。
+
+``` html
+<template>
+  <img
+    class="tama-root"
+    src="/img/tama.svg"
+    alt="タマさん"
+  >
+</template>
+
+<style lang="scss" scoped>
+.tama-root {
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform: translate(200px, 100px);
+}
+</style>
+```
+用 `position: absolute` 绝对定位，然后用 `transform` 指定坐标，虽然指定位置也可以用 `top` 跟 `left`，但是 用 css 来做动画的时候，尽量还是用
 
 
 [1]:https://twitter.com/yuneco
