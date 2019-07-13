@@ -175,6 +175,39 @@ Let's start!
 
 所有的开花的动画都结束了之后，负荷也降不下来， 写了 will-change 的话，为了保证接下来的随时会开始的动画的性能，就算动画结束了，负荷也不会下降。
 
+### 实验 2 结论
+
+  - 写了 will-change 的话，就会启动 GPU 加速
+  - 带 will-change 的元素过多的话，GPU 和 CPU 都会加重负担
+  - 写了 will-change 的元素，就算动画结束了，仍然不会减轻负担
+
+## 实验3：动画结束后，删除 will-change 样式
+
+实验 2 的问题是，开花的动画明明都已经结束了，但是 will-change 却存在着。因此，在实验 3，开花的动画结束后，就把 will-change 样式删除。
+
+为了能够动态的设置 will-change 属性，所以把这个属性挪到 template 里了，然后加个变量去控制它（在 Vue 加了个 isMoving 变量）。监听 animationend 事件，在这个事件内，去改 isMoving 变量。
+
+`Flower.vue`
+``` html
+<div class="flower-root" 
+    :style="{
+      'will-change': isMoving ? 'transform' : 'auto',
+    }"
+    @animationend="onEndAnim">
+    ...
+```
+
+`Flower.vue`
+``` javascript
+private onEndAnim() {
+  this.isMoving = false
+}
+```
+
+检测到动画结束，把
+
+
+
 
 
 
