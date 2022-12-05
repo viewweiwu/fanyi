@@ -40,6 +40,23 @@
 }
 ```
 
+//// scss
+$i: 0;
+@while $i < 100 {
+  .el-table__body {
+    .el-table__row:nth-child(#{$i}) {
+      opacity: 0;
+      animation: table-show 300ms $i * 50ms forwards ease-out;
+    }
+  }
+  $i: $i + 1;
+}
+@keyframes table-show {
+  0% { transform: translateY(50px); opacity: .5; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+///////
+
   1. 用 loop 从 0 开始，循环了 100 次，每次都会生成一条 css。
   2. 每一条 css 都是通过 `nth-child` 的形式去选择标签。
   3. 每条 css 都会有一个 animation。
